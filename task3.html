@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="task3.css">
+    <title>My Simple Web Page</title>
+</head>
+<body bgcolor="#E4F0F8">
+    <header>
+        <h1>Main Flow-Task2</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="signup.html">Sign up</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="blank"></div>
+        <div class="text-animation">
+            <div class="blank"></div>
+            <span class="line1"><h3>Welcome to our simple yet informative website !!</h3></span>
+            <span class="line">It is crafted to showcase the power and clarity of HTML semantic elements.</span>
+        </div>
+    </div>
+    
+    <section class="contact" id="contact">
+  <div class="container">
+    <div class="content">
+      <div class="left-side">
+        <div class="address details">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="topic">Address</div>
+          <div class="text-one">Dilsukhnagar main rd</div>
+          <div class="text-two">Hyderabad</div>
+        </div>
+        <div class="phone details">
+          <i class="fas fa-phone-alt"></i>
+          <div class="topic">Phone</div>
+          <div class="text-one">+91 99110 05647</div>
+          <div class="text-two">+91 94949 46078</div>
+        </div>
+        <div class="email details">
+          <i class="fas fa-envelope"></i>
+          <div class="topic">Email</div>
+          <div class="text-one">spotsmartweb@gmail.com</div>
+          </div>
+      </div>
+      <div class="right-side">
+         <h1>Contact</h1>
+        <p>How can we help?</p><br><br>
+        <div class="topic-text">Send us a message</div>
+        <p>If you have any doubts or if you want to extend your parking time,you can send message to us.</p>
+        <form id="bookingForm" action="message.php" action="post">
+          <div class="input-box">
+              <input type="text" id="bookingID" placeholder="Enter your booking ID" required>
+          </div>
+          <div class="input-box">
+              <input type="text" id="email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+              <input type="text" id="contactNumber" placeholder="Enter your contact number" required>
+          </div>
+          <div class="input-box message-box">
+              <textarea id="message" placeholder="Type your message here" required></textarea>
+          </div>
+          <div class="button">
+              <input type="button" value="Send Now" onclick="submitForm()">
+          </div>
+      </form>
+       </div>
+    </div>
+  </div>
+  <script>
+    function submitForm() {
+        var bookingID = document.getElementById("bookingID").value;
+        var email = document.getElementById("email").value;
+        var contactNumber = document.getElementById("contactNumber").value;
+        var message = document.getElementById("message").value;
+
+        // Send the data to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "message.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Handle the response from the server if needed
+                console.log(xhr.responseText);
+            }
+        };
+
+        var data = "bookingID=" + encodeURIComponent(bookingID) +
+                   "&email=" + encodeURIComponent(email) +
+                   "&contactNumber=" + encodeURIComponent(contactNumber) +
+                   "&message=" + encodeURIComponent(message);
+
+        xhr.send(data);
+    }
+</script>
+    </section>    
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
